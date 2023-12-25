@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caption Finder</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <ul>
+            <li><a>Home</a></li>
+            <li><a>Categories</a></li>
+            <li><a>Contact</a></li>
+        </ul>
+    </header>
+    <main>
+        <input type="text" id="searchInput" placeholder="Search for captions...">
+        <button onclick="searchCaptions()">Search</button>
+        <div id="captionFeed"></div>
+    </main>
+    <script src="script.js"></script>
+</body>
+<script>
+    var captions = [
+    { id: 1, text: "Instagram Captions." },
+    { id: 2, text: "LinkedIn Captions." },
+    // Add more sample captions as needed
+];
+
+function searchCaptions() {
+    // Replace this with your actual search functionality
+    var searchInput = document.getElementById("searchInput").value;
+
+    // For demonstration, let's just display the input as the result
+    var resultContainer = document.getElementById("captionFeed");
+    resultContainer.innerHTML = "<p>Results for: " + searchInput + "</p>";
+
+    // Display the feed again after search
+    displayCaptionFeed();
+}
+
+function displayCaptionFeed() {
+    var feedContainer = document.getElementById("captionFeed");
+    feedContainer.innerHTML = ""; // Clear previous content
+
+    captions.forEach(function(caption) {
+        var card = document.createElement("div");
+        card.className = "captionCard";
+        card.innerHTML = "<p>" + caption.text + "</p>";
+        card.addEventListener("click", function() {
+            openCaptionModal(caption);
+        });
+
+        feedContainer.appendChild(card);
+    });
+}
+
+function openCaptionModal(caption) {
+    // Replace this with your modal implementation
+    alert("Caption ID " + caption.id + ": " + caption.text);
+}
+
+// Call the function to display the initial feed
+displayCaptionFeed();
+
+</script>
+</html>
