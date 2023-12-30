@@ -16,7 +16,7 @@ body {
 }
 
 .container input{
-    margin-right: 80px;
+    margin-right: 20px;
 }
 
 header {
@@ -52,18 +52,18 @@ header ul a:hover{
     cursor: pointer;
 }
 
-.nav .flex a::after{
+.nav-items::after{
     position: absolute;
     content: '';
     
     top: 0;
-    left: 15px;
+    left: 0;
     height: 2px;
     width: 0%;
-    background-color: #1743e3;
-    transition: 0.3s;
+    background-color: #ffffff;
+    transition: all 0.3s;
 }
-.nav .flex a:hover::after{
+.nav-items:hover::after{
     width: 20%;
 }
 
@@ -71,7 +71,7 @@ header ul a:hover{
     position: fixed;
     background-color: #7f7f7f2c;
     height: 98%;
-    width: 10%;
+    width: 13%;
     right: 8px;
     top: 5px;
     border-radius: 20px;
@@ -81,6 +81,48 @@ main {
     /* background-color: #1743e3; */
     padding: 2em 0;
 }
+
+/* ------Menu------- */
+.hamburger {
+  cursor: pointer;
+  display: none;
+}
+
+.hamburger input {
+  display: none;
+}
+
+.hamburger svg {
+  /* The size of the SVG defines the overall size */
+  height: 3em;
+  /* Define the transition for transforming the SVG */
+  transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.line {
+  fill: none;
+  stroke: rgb(255, 255, 255);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 3;
+  /* Define the transition for transforming the Stroke */
+  transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
+              stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.line-top-bottom {
+  stroke-dasharray: 12 63;
+}
+
+.hamburger input:checked + svg {
+  transform: rotate(-45deg);
+}
+
+.hamburger input:checked + svg .line-top-bottom {
+  stroke-dasharray: 20 300;
+  stroke-dashoffset: -32.42;
+}
+
 
 /* ------Search------- */
 /* this is a recreation of twitter search in css */
@@ -108,10 +150,10 @@ main {
   /* a fancy bg for showing background and border when focus. */
   .fancy-bg {
     position: absolute;
-    width: 100%;
+    max-width: 200px;
     inset: 0;
     background: var(--input-bg-color);
-    border-radius: 30px;
+    border-radius: 20px;
     height: 100%;
     z-index: -1;
     pointer-events: none;
@@ -164,6 +206,7 @@ main {
     margin-inline: min(2em,calc(var(--inline-padding-of-input) + var(--gap)));
     background: none;
     border: none;
+    font-family: 'Alata', sans-serif;
   }
   
   .input:focus {
@@ -171,6 +214,7 @@ main {
   }
   
   .input::placeholder {
+    font-family: 'Alata', sans-serif;
     color: var(--text-color)
   }
   /* input background change in focus */
@@ -201,6 +245,9 @@ main {
     background: transparent;
     border: 1px solid #ffffff85;
     border-radius: 20px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    padding-right: 10px;
 }
 .caption-feed {
     display: flex;
@@ -220,7 +267,6 @@ main {
 .captionCard:hover {
     background-color: #f5f5f5;
 }
-/* ... (previous CSS code) */
 
 /* .caption-categories {
     margin-top: 30px;
@@ -258,32 +304,167 @@ main {
     border-radius: 20px;
 }
 
-/* cards */
-.card-bg{
-    padding: 10px 20px 10px 20px;
-    display: inline-block;
+/* ------- Slider --------- */
 
-    border-radius: 10px;
-    margin-left: 40px;
-    height: 800px;
-    width: 1300px;
-    background-color: rgba(107, 107, 107, 0.15);
-    position: absolute;
+.slider #quotes {
+  color: #ffffff;
+  position: absolute;
+  font-family: 'Alata', sans-serif;
+  font-size: 1.5vw;
+  line-height: 1.2;
+  padding: 10px 20px;
+  justify-content: center;
+  text-align: center;
+  right: 30%;
+  top: 25%;
+  transition: ease .5s;
 }
-.carousel1{
-    background-color: #51737F;
-    height: 100px;
-    width: 1200px;
-    margin-left: 50px;
-    margin-top: 40px;
+
+.slider #author {
+  color: #ffffff;
+  position: absolute;
+  font-family: 'Alata', sans-serif;
+  font-size: 1.5vw;
+  line-height: 1.2;
+  right: 30%;
+  top: 65%;
 }
-.card-bg .card{
-    border-radius: 10px;
-    height: 200px;
-    width: 300px;
-    background-color: rgba(217, 217, 217, 0.8);
-    color: #ddd;
-    padding: 20px 10px;
+
+.generate {
+  font-family: 'Alata', sans-serif;
+  position: absolute;
+  display: inline-block;
+  background-color: #2C2A2A;
+  padding: 20px 40px;
+  padding-top: 30px;
+  padding-bottom: 70px;
+  right: 5%;
+  top: 26%;
+  border-radius: 20px;
+  color: #ffffff;
+}
+
+.ri-sparkling-2-line {
+  color: #D7BF79;
+}
+
+.generate button {
+  font-family: 'Alata', sans-serif;
+  position: absolute;
+  margin-top: 10px;
+  padding: 10px 20px 10px 20px;
+  right: 17%;
+  width: 100px;
+  height: 30px;
+  font-size: 10px;
+  border-radius: 20px;
+  text-align: center;
+  justify-content: center;
+  font-weight: 600;
+  cursor: pointer;
+  transition: ease-in-out .5s;
+}
+
+.generate button:hover {
+  transform: scale(1.1);
+  background-color: #FFF78A;
+  box-shadow: #2c3e50;
+}
+
+/* cards */
+/* this card is inspired form this - https://georgefrancis.dev/ */
+
+.cards-1{
+  display: flex;
+  line-break: 2;
+  padding: 10px 20px 10px 20px;
+  background-color: rgba(107, 107, 107, 0.15);
+  width: 1000px;
+  margin: 50px 100px;
+  border-radius: 20px;
+}
+
+.slider{
+  --border-radius: 0.75rem;
+  --primary-color: #6EA1B1;
+  --secondary-color: #3c3852;
+  max-width: 1000px;
+  height: 200px;
+  font-family: "Arial";
+  padding: 2rem;
+  margin: 50px 100px;
+  justify-content: center;
+  border-radius: var(--border-radius);
+  background: rgba(81, 115, 127, 1);
+  box-shadow: 0px 8px 16px 0px rgb(0 0 0 / 3%);
+  position: relative;
+}
+
+.card {
+  --border-radius: 0.75rem;
+  --primary-color: #6EA1B1;
+  --secondary-color: #3c3852;
+  width: 210px;
+  font-family: "Arial";
+  padding: 2rem;
+  margin: 20px 10px;
+  cursor: pointer;
+  border-radius: var(--border-radius);
+  background: #f1f1f3;
+  box-shadow: 0px 8px 16px 0px rgb(0 0 0 / 3%);
+  position: relative;
+}
+
+.card > * + * {
+  margin-top: 1.1em;
+}
+
+.card .card__content {
+  color: var(--secondary-color);
+  font-size: 0.86rem;
+}
+
+.card .card__title {
+  padding: 0;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.card .card__date {
+  color: #6e6b80;
+  font-size: 0.8rem;
+}
+
+.card .card__arrow {
+  position: absolute;
+  background: var(--primary-color);
+  padding: 0.4rem;
+  border-top-left-radius: var(--border-radius);
+  border-bottom-right-radius: var(--border-radius);
+  bottom: 0;
+  right: 0;
+  transition: 0.2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card svg {
+  transition: 0.2s;
+}
+
+/* hover */
+.card:hover .card__title {
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+
+.card:hover .card__arrow {
+  background: #111;
+}
+
+.card:hover .card__arrow svg {
+  transform: translateX(3px);
 }
 
 /* Add responsive styles as needed */
